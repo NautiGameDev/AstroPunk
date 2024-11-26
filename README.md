@@ -6,7 +6,7 @@ This game is currently in early development. At the current state of production 
 
 # Current State of Gameplay Systems
 
-[b]Basic Commands[/b]
+** Basic Commands **
 Basic text-based commands have been implemented, such as "go north", "attack x", "examine y", "get z". This will be further expanded to a [verb] [target] [modifier] system to improve gameplay. Such as "gather carbon 5" will gather 5 carbon in the current chunk rather than typing "gather carbon" 5 times. I also plan on adding "to x" functionality for improved player agency. For example if the player has two refiners, "add carbon 3 to crude refiner" will add 3 carbon to the first crude refiner on the entity list. Currently, "add carbon 3" adds carbon to the most advanced refiner in the area.
 
 [b]World Generation[/b]
