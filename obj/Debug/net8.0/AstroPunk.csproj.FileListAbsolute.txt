@@ -1,0 +1,14 @@
+C:\Users\chris\OneDrive\Desktop\AstroPunk\bin\Debug\net8.0\AstroPunk.exe
+C:\Users\chris\OneDrive\Desktop\AstroPunk\bin\Debug\net8.0\AstroPunk.deps.json
+C:\Users\chris\OneDrive\Desktop\AstroPunk\bin\Debug\net8.0\AstroPunk.runtimeconfig.json
+C:\Users\chris\OneDrive\Desktop\AstroPunk\bin\Debug\net8.0\AstroPunk.dll
+C:\Users\chris\OneDrive\Desktop\AstroPunk\bin\Debug\net8.0\AstroPunk.pdb
+C:\Users\chris\OneDrive\Desktop\AstroPunk\obj\Debug\net8.0\AstroPunk.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chris\OneDrive\Desktop\AstroPunk\obj\Debug\net8.0\AstroPunk.AssemblyInfoInputs.cache
+C:\Users\chris\OneDrive\Desktop\AstroPunk\obj\Debug\net8.0\AstroPunk.AssemblyInfo.cs
+C:\Users\chris\OneDrive\Desktop\AstroPunk\obj\Debug\net8.0\AstroPunk.csproj.CoreCompileInputs.cache
+C:\Users\chris\OneDrive\Desktop\AstroPunk\obj\Debug\net8.0\AstroPunk.dll
+C:\Users\chris\OneDrive\Desktop\AstroPunk\obj\Debug\net8.0\refint\AstroPunk.dll
+C:\Users\chris\OneDrive\Desktop\AstroPunk\obj\Debug\net8.0\AstroPunk.pdb
+C:\Users\chris\OneDrive\Desktop\AstroPunk\obj\Debug\net8.0\AstroPunk.genruntimeconfig.cache
+C:\Users\chris\OneDrive\Desktop\AstroPunk\obj\Debug\net8.0\ref\AstroPunk.dll
