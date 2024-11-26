@@ -24,14 +24,11 @@ public class PlayerHandler
         return messageToReturn;
     }
 
-    public string Process_Emote(string[] parsedInput)
+    public string Process_Emote(string pInput)
     {
         string messageToReturn = player.GetPlayerName();
-
-        for (int i=1; i<parsedInput.Length; i++)
-        {
-            messageToReturn += " " + parsedInput[i];
-        }
+        messageToReturn += " " + pInput;
+        
 
         return messageToReturn;
     }

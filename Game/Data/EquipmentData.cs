@@ -176,10 +176,17 @@ public class EquipmentData
     {
         foreach (string slot in equippedItems.Keys)
         {
-            if (equippedItems[slot].entityName.ToLower() == target)
+            try
             {
-                ItemEntity item = equippedItems[slot];
-                return item;
+                if (equippedItems[slot].entityName.ToLower() == target)
+                {
+                    ItemEntity item = equippedItems[slot];
+                    return item;
+                }
+            }
+            catch
+            {
+                //Leave empty
             }
         }
         

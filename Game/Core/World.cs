@@ -118,33 +118,42 @@ public class World
     public string[] GetEntitiesInChunk(ChunkData chunk)
     {
         string[] entityList = new string[3];
+        int npcIndex = 0;
+        int maxNPCIndex = chunk.storedNPCs.Count;
 
         foreach (NPCEntity npc in chunk.storedNPCs)
         {
+            npcIndex++;
             entityList[0] += npc.entityName;
-            if (chunk.storedNPCs.Last() != npc)
+            if (npcIndex != maxNPCIndex)
             {
                 entityList[0] += ", ";
             }
         }
 
         entityList[0] += "\n";
+        int envIndex = 0;
+        int maxEnvIndex = chunk.storedEnvironmentObj.Count;
 
         foreach (EnvironmentEntity environmentObj in chunk.storedEnvironmentObj)
         {
+            envIndex++;
             entityList[1] += environmentObj.entityName;
-            if (chunk.storedEnvironmentObj.Last() != environmentObj)
+            if (envIndex != maxEnvIndex)
             {
                 entityList[1] += ", ";
             }
         }
 
         entityList[1] += "\n";
+        int itemIndex = 0;
+        int maxItemIndex = chunk.storedItems.Count;
 
         foreach (ItemEntity item in chunk.storedItems)
         {
+            itemIndex++;
             entityList[2] += item.entityName;
-            if (chunk.storedItems.Last() != item)
+            if (itemIndex != maxItemIndex)
             {
                 entityList[2] += ", ";
             }

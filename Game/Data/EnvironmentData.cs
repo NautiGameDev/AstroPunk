@@ -162,8 +162,8 @@ public class EnvironmentData
             new Dictionary<string, string>() {
                 {"EntityName", "Crude Refiner"},
                 {"EntityType", "Furniture"},
-                {"Drop Table", "Carbon"},
-                {"Inventory", ""},
+                {"Drop Table", ""},
+                {"Inventory", "Carbon%5"},
                 {"AttackMessage", "You ponder attacking the refiner, but realize it won't do anything."},
                 {"ListenMessage", "You listen to the refiner. A sound of subtle humming echoes from the machine."},
                 {"InspectMessage", "A basic machine used to refine raw metals into ingots."},

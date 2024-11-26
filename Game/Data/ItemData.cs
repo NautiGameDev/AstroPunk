@@ -24,7 +24,8 @@ public class ItemData
                 {"ListenMessage", "You listen to the stellar seed, but hear nothing."},
                 {"InspectMessage", "A tiny, blue seed used to grow Stellar Arbors."},
                 {"GatherMessage", "You pick up the stellar seed."},
-                {"LootMessage", ""}
+                {"LootMessage", "You pick up the stellar seed."},
+                {"RefineItem", ""}
             }},
         {"Carbon", 
             new Dictionary<string, string>() {
@@ -45,28 +46,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the container of carbon. It makes a dull thud."},
                 {"InspectMessage", "A container of carbon useful for crafting tools, weapons, and structures."},
                 {"GatherMessage", "You capture the carbon in a container."},
-                {"LootMessage", "You capture the carbon in a container."}
-        }},
-        {"Silicon", 
-            new Dictionary<string, string>() {
-                {"EntityName", "Silicon"},
-                {"EntityType", "Material"},
-                {"EquipableSlot", "None"},
-                {"Weight_KG", "0.2"},
-                {"Armor", "0"},
-                {"Strength", "0"},
-                {"Dexterity", "0"},
-                {"Vitality", "0"},
-                {"Intelligence", "0"},
-                {"Charisma", "0"},
-                {"Agility", "0"},
-                {"DiceAmount", "0"},
-                {"Range", "0"},
-                {"AttackMessage", "Attacking the silicon probably isn't a great idea."},
-                {"ListenMessage", "You tap on the silicon. It makes a dull thud."},
-                {"InspectMessage", "An ingot of silicon useful for crafting electronics."},
-                {"GatherMessage", "You pick up the ingot of silicon."},
-                {"LootMessage", "You pick up ingot of silicon."}
+                {"LootMessage", "You capture the carbon in a container."},
+                {"RefineItem", ""}
         }},
         {"Oxygen", 
             new Dictionary<string, string>() {
@@ -87,7 +68,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the container of oxygen. It makes a dull thud."},
                 {"InspectMessage", "A container of oxygen used to refill your oxygen tank."},
                 {"GatherMessage", "You capture the oxygen in a container."},
-                {"LootMessage", "You capture the oxygen in a container."}
+                {"LootMessage", "You capture the oxygen in a container."},
+                {"RefineItem", ""}
         }},
         {"Uranium", 
             new Dictionary<string, string>() {
@@ -108,7 +90,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the container of uranium. It makes a dull thud."},
                 {"InspectMessage", "A container of uranium used for ship fuel."},
                 {"GatherMessage", "You capture the uranium in a container."},
-                {"LootMessage", "You capture the uranium in a container."}
+                {"LootMessage", "You capture the uranium in a container."},
+                {"RefineItem", ""}
         }},
         {"Hydrogen", 
             new Dictionary<string, string>() {
@@ -129,7 +112,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the container of hydrogen. It makes a dull thud."},
                 {"InspectMessage", "A container of hyrogen used for reactor fuel."},
                 {"GatherMessage", "You capture the hydrogen in a container."},
-                {"LootMessage", "You capture the hydrogen in a container."}
+                {"LootMessage", "You capture the hydrogen in a container."},
+                {"RefineItem", ""}
         }},
         {"Stone",
             new Dictionary<string, string>() {
@@ -150,7 +134,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the stone. It sounds dense and heavy."},
                 {"InspectMessage", "A chunk of stone useful for making crude machinery."},
                 {"GatherMessage", "You gather the stone."},
-                {"LootMessage", "You gather the stone."}
+                {"LootMessage", "You gather the stone."},
+                {"RefineItem", ""}
         }},
         {"Iron",
             new Dictionary<string, string>() {
@@ -171,7 +156,30 @@ public class ItemData
                 {"ListenMessage", "You tap on the iron. It sounds dense."},
                 {"InspectMessage", "A raw chunk of iron ready to be refined into ingots."},
                 {"GatherMessage", "You gather the iron ore."},
-                {"LootMessage", "You gather the iron ore."}
+                {"LootMessage", "You gather the iron ore."},
+                {"RefineItem", "Iron Ingot"}
+        }},
+        {"Iron Ingot",
+            new Dictionary<string, string>() {
+                {"EntityName", "Iron Ingot"},
+                {"EntityType", "Material"},
+                {"EquipableSlot", "None"},
+                {"Weight_KG", "1"},
+                {"Armor", "0"},
+                {"Strength", "0"},
+                {"Dexterity", "0"},
+                {"Vitality", "0"},
+                {"Intelligence", "0"},
+                {"Charisma", "0"},
+                {"Agility", "0"},
+                {"DiceAmount", "0"},
+                {"Range", "0"},
+                {"AttackMessage", "Attacking something useful probably isn't a good idea."},
+                {"ListenMessage", "You tap on the iron ingot. It sounds dense."},
+                {"InspectMessage", "A shiny bar of refined iron, useful for crafting."},
+                {"GatherMessage", "You gather the iron ingot."},
+                {"LootMessage", "You gather the iron ingot."},
+                {"RefineItem", ""}
         }},
         {"Copper",
             new Dictionary<string, string>() {
@@ -192,7 +200,30 @@ public class ItemData
                 {"ListenMessage", "You tap on the copper. It sounds dense."},
                 {"InspectMessage", "A raw chunk of copper ready to be refined into ingots."},
                 {"GatherMessage", "You gather the copper ore."},
-                {"LootMessage", "You gather the copper ore."}
+                {"LootMessage", "You gather the copper ore."},
+                {"RefineItem", "Copper Ingot"}
+        }},
+        {"Copper Ingot",
+            new Dictionary<string, string>() {
+                {"EntityName", "Copper Ingot"},
+                {"EntityType", "Material"},
+                {"EquipableSlot", "None"},
+                {"Weight_KG", "1"},
+                {"Armor", "0"},
+                {"Strength", "0"},
+                {"Dexterity", "0"},
+                {"Vitality", "0"},
+                {"Intelligence", "0"},
+                {"Charisma", "0"},
+                {"Agility", "0"},
+                {"DiceAmount", "0"},
+                {"Range", "0"},
+                {"AttackMessage", "Attacking something useful probably isn't a good idea."},
+                {"ListenMessage", "You tap on the copper ingot. It sounds dense."},
+                {"InspectMessage", "A shiny bar of copper ready to be crafted into something more useful."},
+                {"GatherMessage", "You gather the copper ingot."},
+                {"LootMessage", "You gather the copper ingot."},
+                {"RefineItem", ""}
         }},
         {"Gold",
             new Dictionary<string, string>() {
@@ -213,7 +244,30 @@ public class ItemData
                 {"ListenMessage", "You tap on the gold. It sounds dense."},
                 {"InspectMessage", "A raw chunk of gold ready to be refined into ingots."},
                 {"GatherMessage", "You gather the gold ore."},
-                {"LootMessage", "You gather the gold ore."}
+                {"LootMessage", "You gather the gold ore."},
+                {"RefineItem", "Gold Ingot"}
+        }},
+        {"Gold Ingot",
+            new Dictionary<string, string>() {
+                {"EntityName", "Gold Ingot"},
+                {"EntityType", "Material"},
+                {"EquipableSlot", "None"},
+                {"Weight_KG", "1"},
+                {"Armor", "0"},
+                {"Strength", "0"},
+                {"Dexterity", "0"},
+                {"Vitality", "0"},
+                {"Intelligence", "0"},
+                {"Charisma", "0"},
+                {"Agility", "0"},
+                {"DiceAmount", "0"},
+                {"Range", "0"},
+                {"AttackMessage", "Attacking something useful probably isn't a good idea."},
+                {"ListenMessage", "You tap on the gold ingot. It sounds dense."},
+                {"InspectMessage", "A shiny bar of gold ready to be crafted into something useful."},
+                {"GatherMessage", "You gather the gold ingot."},
+                {"LootMessage", "You gather the gold ingot."},
+                {"RefineItem", ""}
         }},
         {"Silver",
             new Dictionary<string, string>() {
@@ -234,7 +288,30 @@ public class ItemData
                 {"ListenMessage", "You tap on the silver. It sounds dense."},
                 {"InspectMessage", "A raw chunk of silver ready to be refined into ingots."},
                 {"GatherMessage", "You gather the silver ore."},
-                {"LootMessage", "You gather the silver ore."}
+                {"LootMessage", "You gather the silver ore."},
+                {"RefineItem", "Silver Ingot"}
+        }},
+        {"Silver Ingot",
+            new Dictionary<string, string>() {
+                {"EntityName", "Silver Ingot"},
+                {"EntityType", "Material"},
+                {"EquipableSlot", "None"},
+                {"Weight_KG", "1"},
+                {"Armor", "0"},
+                {"Strength", "0"},
+                {"Dexterity", "0"},
+                {"Vitality", "0"},
+                {"Intelligence", "0"},
+                {"Charisma", "0"},
+                {"Agility", "0"},
+                {"DiceAmount", "0"},
+                {"Range", "0"},
+                {"AttackMessage", "Attacking something useful probably isn't a good idea."},
+                {"ListenMessage", "You tap on the silver ingot. It sounds dense."},
+                {"InspectMessage", "A shiny bar of refined silver ready to be crafted into something useful."},
+                {"GatherMessage", "You gather the silver ingot."},
+                {"LootMessage", "You gather the silver ingot."},
+                {"RefineItem", ""}
         }},
         {"Titanium",
             new Dictionary<string, string>() {
@@ -255,7 +332,30 @@ public class ItemData
                 {"ListenMessage", "You tap on the titanium ore. It sounds dense."},
                 {"InspectMessage", "A raw chunk of titanium ore ready to be refined into ingots."},
                 {"GatherMessage", "You gather the titanium ore."},
-                {"LootMessage", "You gather the titanium ore."}
+                {"LootMessage", "You gather the titanium ore."},
+                {"RefineItem", "Titanium Ingot"}
+        }},
+        {"Titanium Ingot",
+            new Dictionary<string, string>() {
+                {"EntityName", "Titanium Ingot"},
+                {"EntityType", "Material"},
+                {"EquipableSlot", "None"},
+                {"Weight_KG", "1"},
+                {"Armor", "0"},
+                {"Strength", "0"},
+                {"Dexterity", "0"},
+                {"Vitality", "0"},
+                {"Intelligence", "0"},
+                {"Charisma", "0"},
+                {"Agility", "0"},
+                {"DiceAmount", "0"},
+                {"Range", "0"},
+                {"AttackMessage", "Attacking something useful probably isn't a good idea."},
+                {"ListenMessage", "You tap on the titanium ingot. It sounds dense."},
+                {"InspectMessage", "A shiny bar of refined titanium ready to be crafted into something useful."},
+                {"GatherMessage", "You gather the titanium ingot."},
+                {"LootMessage", "You gather the titanium ingot."},
+                {"RefineItem", ""}
         }},
         {"Quartz", 
             new Dictionary<string, string>() {
@@ -276,7 +376,30 @@ public class ItemData
                 {"ListenMessage", "You tap on the quartz. It makes a dull thud."},
                 {"InspectMessage", "A chunk of raw quartz ready to be refined into silicon ingots."},
                 {"GatherMessage", "You pick up a chunk of raw quartz."},
-                {"LootMessage", "You pick up a chunk of raw quartz."}
+                {"LootMessage", "You pick up a chunk of raw quartz."},
+                {"RefineItem", "Silicon"}
+        }},
+        {"Silicon", 
+            new Dictionary<string, string>() {
+                {"EntityName", "Silicon"},
+                {"EntityType", "Material"},
+                {"EquipableSlot", "None"},
+                {"Weight_KG", "0.2"},
+                {"Armor", "0"},
+                {"Strength", "0"},
+                {"Dexterity", "0"},
+                {"Vitality", "0"},
+                {"Intelligence", "0"},
+                {"Charisma", "0"},
+                {"Agility", "0"},
+                {"DiceAmount", "0"},
+                {"Range", "0"},
+                {"AttackMessage", "Attacking the silicon probably isn't a great idea."},
+                {"ListenMessage", "You tap on the silicon. It makes a dull thud."},
+                {"InspectMessage", "An ingot of silicon useful for crafting electronics."},
+                {"GatherMessage", "You pick up the ingot of silicon."},
+                {"LootMessage", "You pick up ingot of silicon."},
+                {"RefineItem", ""}
         }},
         {"Crystal Carp",
             new Dictionary<string, string>() {
@@ -295,9 +418,10 @@ public class ItemData
                 {"Range", "0"},
                 {"AttackMessage", "It's already dead, you maniac."},
                 {"ListenMessage", "You move the fishes lips with your finger as if it was talking, but you hear nothing."},
-                {"InspectMessage", "A fresh water fish."},
+                {"InspectMessage", "A raw, fresh water fish."},
                 {"GatherMessage", "You pick up the Crystal Carp."},
-                {"LootMessage", "You pick up the Crystal Carp."}
+                {"LootMessage", "You pick up the Crystal Carp."},
+                {"RefineItem", ""}
         }},
         {"Water",
             new Dictionary<string, string>() {
@@ -318,13 +442,14 @@ public class ItemData
                 {"ListenMessage", "You swish the water around the container. It makes a little sound, but nothing interesting."},
                 {"InspectMessage", "A small container of water for multiple uses."},
                 {"GatherMessage", "You fill a container with water."},
-                {"LootMessage", "You fill a container with water."}
+                {"LootMessage", "You fill a container with water."},
+                {"RefineItem", ""}
         }},
 #endregion
 
 #region EQUIPABLE
 
-#region leather
+#region Ragged
         {"Ragged Belt", new Dictionary<string, string>() {
                 {"EntityName", "Ragged Belt"},
                 {"EntityType", "Equipable"},
@@ -343,7 +468,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the Ragged Belt. A dull sound fills the air."},
                 {"InspectMessage", "A crude belt made of warn leather. It provides little protection to the wearer."},
                 {"GatherMessage", "You pick up the Ragged Belt."},
-                {"LootMessage", "You pick up the Ragged Belt."}
+                {"LootMessage", "You pick up the Ragged Belt."},
+                {"RefineItem", ""}
         }},
         {"Ragged Boots", new Dictionary<string, string>() {
                 {"EntityName", "Ragged Boots"},
@@ -363,7 +489,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the Ragged Boots, a dull sound fills the air."},
                 {"InspectMessage", "Crude boots made from worn leather. It provides some protection to the wearer."},
                 {"GatherMessage", "You pick up the Ragged Boots."},
-                {"LootMessage", "You pick up the Ragged Boots."}
+                {"LootMessage", "You pick up the Ragged Boots."},
+                {"RefineItem", ""}
         }},
         {"Ragged Bracers", new Dictionary<string, string>() {
                 {"EntityName", "Ragged Bracers"},
@@ -383,7 +510,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the Ragged Bracers, a faint sound fills the air."},
                 {"InspectMessage", "A crude set of bracers. They provide a little protection to the wearer."},
                 {"GatherMessage", "You pick up a pair of Ragged Bracers."},
-                {"LootMessage", "You pick up a pair of Ragged Bracers."}
+                {"LootMessage", "You pick up a pair of Ragged Bracers."},
+                {"RefineItem", ""}
         }},
         {"Ragged Chest", new Dictionary<string, string>() {
                 {"EntityName", "Ragged Chest"},
@@ -403,7 +531,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the Ragged Chest, a dull sound fills the air."},
                 {"InspectMessage", "A crude chest piece made of worn leather. It provides a little protection to the wearer."},
                 {"GatherMessage", "You pick up the Ragged Chest."},
-                {"LootMessage", "You pick up the Ragged Chest."}
+                {"LootMessage", "You pick up the Ragged Chest."},
+                {"RefineItem", ""}
         }},
         {"Ragged Gloves", new Dictionary<string, string>() {
                 {"EntityName", "Ragged Gloves"},
@@ -423,7 +552,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the Ragged Gloves. A dull sound fills the air."},
                 {"InspectMessage", "A crude pair of gloves made of worn leather. It provides a little protection to the wearer."},
                 {"GatherMessage", "You pick up the Ragged Gloves."},
-                {"LootMessage", "You pick up the Ragged Gloves."}
+                {"LootMessage", "You pick up the Ragged Gloves."},
+                {"RefineItem", ""}
         }},
         {"Ragged Helmet", new Dictionary<string, string>() {
                 {"EntityName", "Ragged Helmet"},
@@ -443,7 +573,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the Ragged Helmet. A dull sound echoes through the air."},
                 {"InspectMessage", "A crude helmet made from leather."},
                 {"GatherMessage", "You obtain the Ragged Helmet."},
-                {"LootMessage", "You obtain the Ragged Helmet."}
+                {"LootMessage", "You obtain the Ragged Helmet."},
+                {"RefineItem", ""}
         }},
         {"Ragged Leggings", new Dictionary<string, string>() {
                 {"EntityName", "Ragged Leggings"},
@@ -463,7 +594,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the Ragged Leggings. A dull sound fills the air."},
                 {"InspectMessage", "A crude pair of leggings made from worn leather. It provides a little protection to the wearer."},
                 {"GatherMessage", "You pick up the Ragged Leggings."},
-                {"LootMessage", "You pick up the Ragged Leggings."}
+                {"LootMessage", "You pick up the Ragged Leggings."},
+                {"RefineItem", ""}
         }},
         {"Ragged Shoulders", new Dictionary<string, string>() {
                 {"EntityName", "Ragged Shoulders"},
@@ -483,14 +615,15 @@ public class ItemData
                 {"ListenMessage", "You tap on the Ragged Shoulder pads. A dull sound fills the air."},
                 {"InspectMessage", "A pair of shoulder pads made of crude leather. It provides a little protection to the wearer."},
                 {"GatherMessage", "You pick up the Ragged Shoulders."},
-                {"LootMessage", "You pick up the Ragged Shoulders."}
+                {"LootMessage", "You pick up the Ragged Shoulders."},
+                {"RefineItem", ""}
         }},
 
 
 
 #endregion
 
-#region bronze
+#region Plasma
 
         {"Plasma Pistol", new Dictionary<string, string>() {
                 {"EntityName", "Plasma Pistol"},
@@ -510,7 +643,8 @@ public class ItemData
                 {"ListenMessage", "You tap on the Plasma Pistol. The high pitch clink vibrates off the metal."},
                 {"InspectMessage", "A simple pistol that fires superheated, ionized gas. It gets the job done in a pinch."},
                 {"GatherMessage", "You take up the plasma pistol."},
-                {"LootMessage", "You take up the plasma pistol."}
+                {"LootMessage", "You take up the plasma pistol."},
+                {"RefineItem", ""}
         }},
 #endregion
 

@@ -14,12 +14,28 @@ namespace AstroPunk
         static void Main(string[] args)
         {
             Console.Title = "AstroPunk";
-            Console.WindowWidth = 95;
             Console.ForegroundColor = ConsoleColor.White;
 
             Game game = new Game();
 
             bool isPlaying = true;
+            bool isTesting = false;
+
+            while (isTesting)
+            {
+                Parser textParser = new Parser();
+                Console.Write("Input text >>");
+                Dictionary<string, string> parsedInput = textParser.ParseInput(Console.ReadLine());
+
+                foreach (string s in parsedInput.Keys)
+                {
+                    Console.WriteLine(s + " " + parsedInput[s]);
+                }
+    
+                Console.WriteLine("\nPress any key to try again");
+                Console.ReadKey();
+
+            }
 
             while (isPlaying)
             {

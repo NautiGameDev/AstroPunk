@@ -1,3 +1,5 @@
+using System.Runtime;
+
 public class EnvironmentEntity
 {
  public enum entTypes {NONE, PLANT, ORE, WATER, FURNITURE}
@@ -7,7 +9,9 @@ public class EnvironmentEntity
 
 
     public List<ItemEntity> dropTable = new List<ItemEntity>();
-    public Dictionary<ItemEntity, float> inventoryTable = new Dictionary<ItemEntity, float>();
+    public Dictionary<ItemEntity, int> inventoryTable = new Dictionary<ItemEntity, int>();
+
+    float charge = 0f;
 
     public string attackMessage;
     public string listenMessage;
@@ -84,7 +88,7 @@ public class EnvironmentEntity
             if (parsedItemString[0] != "")
             {
                 ItemEntity newItem = gameWorld.CreateItemFromData(parsedItemString[0]);
-                inventoryTable.Add(newItem, float.Parse(parsedItemString[1]));
+                inventoryTable.Add(newItem, int.Parse(parsedItemString[1]));
             }
         }
     }
@@ -96,20 +100,20 @@ public class EnvironmentEntity
 
     public string GetInspectMessage()
     {
-        if (entityType == entTypes.FURNITURE)
+        
+    string returnMessage = inspectMessage;
+    
+    if (inventoryTable.Count > 0)
+    {
+        returnMessage += "\n\n" + entityName + " inventory: ";
+
+        foreach (ItemEntity item in inventoryTable.Keys)
         {
-            string returnMessage = inspectMessage;
-            returnMessage += "\n\n" + entityName + " inventory: ";
-
-            foreach (ItemEntity item in dropTable)
-            {
-                returnMessage += "\n" + item.entityName;
-            }
-
-            return returnMessage;
+            returnMessage += "\n" + item.entityName + " x" + inventoryTable[item];
         }
+    }
 
-        return inspectMessage;
+    return returnMessage;
     }
 
     public string GetListenMessage()
@@ -122,29 +126,9 @@ public class EnvironmentEntity
         return attackMessage;
     }
 
-    public ItemEntity GetItemFromInventory()
-    {
-        //Returns random item upon gather/harvest commands
-
-        float randomNumb = Utilities.GetRandomFloat_0to1();
-        float highestChance = 1f;
-        ItemEntity chosenItem = null;
-
-        foreach (ItemEntity item in inventoryTable.Keys)
-        {
-            if (randomNumb < inventoryTable[item] && inventoryTable[item] <= highestChance)
-            {
-                highestChance = inventoryTable[item];
-                chosenItem = item;
-            }
-        }
-
-        return chosenItem;
-    }
-
     public ItemEntity GetDropItem()
     {
-        if (dropTable[0] != null)
+        if (dropTable.Count >= 1)
         {
             return dropTable[0];
         }
@@ -152,15 +136,95 @@ public class EnvironmentEntity
         return null;
     }
 
-    public void RemoveDropItem(ItemEntity item)
+    public List<ItemEntity> GetStoredItems()
     {
-        dropTable.Remove(item);
+        List<ItemEntity> storedItems = new List<ItemEntity>();
+
+        foreach (ItemEntity item in inventoryTable.Keys)
+        {
+            for (int i=0; i<inventoryTable[item]; i++)
+            {
+                storedItems.Add(item);
+            }
+        }
+
+        return storedItems;
     }
 
-    public void AddDropItem(ItemEntity item)
+    public void AddItemToInventory(ItemEntity item, int amt)
     {
-        dropTable.Add(item);
+        if (inventoryTable.ContainsKey(item))
+        {
+            inventoryTable[item] += amt;
+        }
+        else
+        {
+            inventoryTable.Add(item, amt);
+        }
     }
 
+    public ItemEntity RemoveItemFromInventory(string ent, int amt)
+    {
+        foreach (ItemEntity item in inventoryTable.Keys)
+        {
+            if (item.entityName.ToLower() == ent.ToLower())
+            {
+                if (inventoryTable[item] >= amt)
+                {
+                    inventoryTable[item] -= amt;
+
+                    if (inventoryTable[item] <= 0)
+                    {
+                        inventoryTable.Remove(item);
+                    }
+
+                    return item;
+                }
+            }
+        }
+
+        return null;
+    }
     
+    public bool CheckForFuel()
+    {
+        while (true)
+        {
+            if (charge > 0.1f)
+            {
+                return true;
+            }
+            else
+            {
+                bool hasCarbon = false;
+
+                foreach (ItemEntity item in inventoryTable.Keys)
+                {
+                    if (item.entityName == "Carbon")
+                    {
+                        hasCarbon = true;
+                        inventoryTable[item] -= 1;
+                        
+                        if (inventoryTable[item] == 0)
+                        {
+                            inventoryTable.Remove(item);
+                        }
+
+                        charge += 1f;
+                        break;
+                    }
+                }
+
+                if (hasCarbon == false)
+                {
+                    return false;
+                }
+            }
+        }
+    }
+
+    public void ReduceCharge()
+    {
+        charge -= 0.1f;
+    }
 }

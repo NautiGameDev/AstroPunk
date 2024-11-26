@@ -8,7 +8,6 @@ public class ItemEntity
     public entTypes entityType;
     public equipableSlot entitySlot;
     public float weight_kg;
-    public int quantity = 1;
 
     public Dictionary<string, int> itemModifiers = new Dictionary<string, int>() 
     {
@@ -29,6 +28,8 @@ public class ItemEntity
     public string inspectMessage;
     public string gatherMessage;
     public string lootMessage;
+
+    string refineItem;
 
     public ItemEntity(ItemData itemData, string item)
     {
@@ -56,6 +57,8 @@ public class ItemEntity
         inspectMessage = newItem["InspectMessage"];
         gatherMessage = newItem["GatherMessage"];
         lootMessage = newItem["LootMessage"];
+
+        refineItem = newItem["RefineItem"];
     }
 
     private entTypes SetEntityType(string eType)
@@ -155,5 +158,25 @@ public class ItemEntity
     public string GetAttackMessage()
     {
         return attackMessage;
-    }    
+    }
+
+    public ItemEntity SmeltItem(World world)
+    {
+        if (refineItem != "")
+        {
+            return world.CreateItemFromData(refineItem);
+        }
+
+        return null;
+    }
+
+    public bool CanBeSmelted()
+    {
+        if (refineItem != "")
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

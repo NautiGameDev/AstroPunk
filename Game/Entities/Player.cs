@@ -131,6 +131,13 @@ public class Player
         return stringToReturn;
     }
 
+    public string AddItemToInventory(ItemEntity item, int amount)
+    {
+        string stringToReturn = "The " + item.entityName + " has been placed in your pack.";
+        playerInventory.PlaceItemInInventory(item);
+        return stringToReturn;
+    }
+
     public void RemoveItemFromInventory(string target)
     {
         playerInventory.RemoveItemInInventory(target);

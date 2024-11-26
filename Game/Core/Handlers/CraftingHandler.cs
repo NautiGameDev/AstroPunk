@@ -15,7 +15,7 @@ public class CraftingHandler
         world = AH.Get_WorldReference();
     }
 
-    public string Process_Crafting(string target)
+    public string Process_Crafting(string target, int amount)
     {
         string t = textInfo.ToTitleCase(target);
 
@@ -28,9 +28,9 @@ public class CraftingHandler
 
         if (recipe != null)
         {
-            if (PlayerHasIngredients(recipe))
+            if (PlayerHasIngredients(recipe, amount))
             {
-                return Craft_Target(t, recipe);
+                return Craft_Target(t, recipe, amount);
             }
         }
         else
@@ -58,7 +58,7 @@ public class CraftingHandler
         return true;
     }
 
-    bool PlayerHasIngredients(Dictionary<string, string> recipe)
+    bool PlayerHasIngredients(Dictionary<string, string> recipe, int amount)
     {
         string[] materialsRequired = recipe["Materials Required"].Split("/");
 
@@ -68,7 +68,7 @@ public class CraftingHandler
 
             int quantityOnHand = player.GetItemQuantityInInventory(material[0].ToLower());                   
 
-            if (quantityOnHand < int.Parse(material[1]))
+            if (quantityOnHand < (int.Parse(material[1]) * amount))
             {
                 return false;
             }
@@ -77,30 +77,43 @@ public class CraftingHandler
         return true;
     }
 
-    string Craft_Target(string target, Dictionary<string, string> recipe)
+    string Craft_Target(string target, Dictionary<string, string> recipe, int amount)
     {
         string[] materialsRequired = recipe["Materials Required"].Split("/");
+        string messageToReturn = "";
 
-        EnvironmentEntity newEnvironment = world.CreateEnvironmentFromData(target);
-
-        if (newEnvironment != null)
+        for (int i=0; i<amount; i++)
         {
-            world.AddEnvironmentToChunk(newEnvironment);
-            RemoveMaterialsFromInventory(materialsRequired);
+            EnvironmentEntity newEnvironment = world.CreateEnvironmentFromData(target);
 
-            return "You craft a " + target + " and place it in the world.";
+            if (newEnvironment != null)
+            {
+                world.AddEnvironmentToChunk(newEnvironment);
+                RemoveMaterialsFromInventory(materialsRequired);
+
+                messageToReturn = "You craft a " + target + " and place it in the world.";
+            }
         }
 
-        ItemEntity newItem = world.CreateItemFromData(target);
-
-        if (newItem != null)
+        if (messageToReturn != "")
         {
-            player.AddItemToInventory(newItem);
-            RemoveMaterialsFromInventory(materialsRequired);
-            return "You craft a " + target + " and place it in your pack.";
+            return messageToReturn;
         }
 
-        return "";
+        for (int i=0; i<amount; i++)
+        {
+
+            ItemEntity newItem = world.CreateItemFromData(target);
+
+            if (newItem != null)
+            {
+                player.AddItemToInventory(newItem);
+                RemoveMaterialsFromInventory(materialsRequired);
+                messageToReturn = "You craft a " + target + " and place it in your pack.";
+            }
+        }
+
+        return messageToReturn;
     }
 
     void RemoveMaterialsFromInventory(string[] materialsRequired)
@@ -112,47 +125,71 @@ public class CraftingHandler
             }
     }
 
-    public string Process_Fuel(string target)
+    public string SmeltItem(string target, int amount, string subtarget)
     {
-        string[] t = target.Split(" ");
-
-        string messageToReturn = "";
-
-        if (t[0] != "carbon")
+        if (subtarget == "")
         {
-            messageToReturn += "You can't add " + t[0] + " to any refiners.";
-            return messageToReturn;
+            return "You need to specify where you want to smelt the " + target;
+        }
+
+        if (!subtarget.Contains("refiner"))
+        {
+            return "You can only refine items in a refiner.";
         }
 
         ChunkData currentChunk = world.GetChunkAtWorldCoords();
+        
+        ItemEntity item = actionHandler.GetItemInInventory(target);
 
-        string crudeRefiner = "crude refiner";
-
-        EnvironmentEntity crudeRefinerObj = actionHandler.GetEnvironmentObj(crudeRefiner, currentChunk);
-
-        if (crudeRefinerObj != null)
+        if (item == null)
         {
-            int quantityOnHand = player.GetItemQuantityInInventory(t[0]);
+            return "You don't have any " + target + " in your inventory.";
+        }
 
-            if (quantityOnHand >= int.Parse(t[1]))
+        if (!item.CanBeSmelted())
+        {
+            return "You can't refine " + target + " further.";
+        }
+
+        int itemOH = player.GetItemQuantityInInventory(target);
+
+        if (itemOH < amount)
+        {
+            return "You don't have enough " + target + " to do that.";
+        }
+
+        EnvironmentEntity envObj = actionHandler.GetEnvironmentObj(subtarget, currentChunk);
+
+        if (envObj == null)
+        {
+            return subtarget + " doesn't exist in the area.";
+        }
+
+        int numbRefined = 0;
+
+        for (int i = 0; i<amount; i++)
+        {
+            if (envObj.CheckForFuel())
             {
-                ItemEntity item = player.GetItemFromInventory(t[0]);
-
-                for (int i=0; i<int.Parse(t[1]); i++)
-                {
-                    crudeRefinerObj.AddDropItem(item);
-                }
-
-                player.RemoveItemFromInventory(t[0], int.Parse(t[1]));
-
-                messageToReturn += "You add " + t[1] + " " + t[0] + " to the Crude Refiner.";
+                envObj.ReduceCharge();
+                ItemEntity ingot = item.SmeltItem(world);
+                player.RemoveItemFromInventory(target, 1);
+                player.AddItemToInventory(ingot);
+                numbRefined++;
             }
             else
             {
-                messageToReturn += "You don't have enough " + t[0];
+                if (numbRefined == 0)
+                {
+                    return "You don't have any usable fuel in the " + subtarget + ". Add carbon to refine your ores.";
+                }
+                else
+                {
+                    return "You refined " + numbRefined + " " + target + " into ingots, but ran out of fuel in the " + subtarget + ". Add more carbon to continue refining. The ingots have been placed in your pack.";
+                }
             }
         }
 
-        return messageToReturn;
+        return "You refined " + numbRefined + " " + target + " into ingots. The ingots have been placed in your pack.";
     }
 }

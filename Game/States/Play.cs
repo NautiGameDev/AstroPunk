@@ -23,15 +23,14 @@ class Play
         messageToReturn[0] += DisplayEntities();
         
 
-        messageToReturn[1] = messageFromAction;
+        messageToReturn[1] = "\n" + messageFromAction;
     
         return messageToReturn;
     }
 
     public string ProcessInput(string playerInput)
     {
-        string[] parsedInput = playerInput.Split(" ");
-        string messageToReturn = actionHandler.GetInputAction(parsedInput);
+        string messageToReturn = actionHandler.GetInputAction(playerInput);
         messageFromAction = messageToReturn;
 
         return "";
@@ -72,6 +71,20 @@ class Play
         messageToReturn += "Items: " + entityLists[2];
         messageToReturn += "-------------------------------------------------------------------------------------------\n";
 
+        return messageToReturn;
+    }
+
+    string DisplayHotKeys()
+    {
+        string messageToReturn = "";
+        messageToReturn += "\n-------------------------------------------------------------------------------------------\n";
+        messageToReturn += "Quick Actions\n";
+        messageToReturn += "\n[N] Move North  [G] Get/Harvest  [I] Inventory          [M] Make/Craft";
+        messageToReturn += "\n[S] Move South  [A] Attack       [EQ] Equipment/Equip   [H] Help";
+        messageToReturn += "\n[E] Move East   [L] Look         [R] Unequip/Remove";
+        messageToReturn += "\n[W] Move West   [C] Consume      [U] Use";
+        messageToReturn += "\n-------------------------------------------------------------------------------------------\n";
+    
         return messageToReturn;
     }
 }

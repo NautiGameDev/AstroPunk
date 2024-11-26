@@ -10,21 +10,37 @@ public class InventoryData
         return currentWeight;
     }
 
-    public void PlaceItemInInventory(ItemEntity item)
+    public void PlaceItemInInventory(ItemEntity i)
     {
-        foreach (ItemEntity heldItem in inventoryDict.Keys)
+
+        foreach (ItemEntity item in inventoryDict.Keys)
         {
-            if (heldItem.entityName == item.entityName)
+            if (item.entityName == i.entityName)
             {
-                inventoryDict[heldItem] += 1;
-                currentWeight += item.weight_kg;
+                inventoryDict[item] += 1;
                 return;
             }
         }
-
-        inventoryDict.Add(item, 1);
-        
+            
+        inventoryDict.Add(i, 1);
+            
     }
+
+    public void PlaceItemInInventory(ItemEntity i, int amount)
+    {
+
+        foreach (ItemEntity item in inventoryDict.Keys)
+        {
+            if (item.entityName == i.entityName)
+            {
+                inventoryDict[item] += amount;
+                return;
+            }
+        }
+            
+        inventoryDict.Add(i, amount);     
+    }
+
 
     public void RemoveItemInInventory(string target)
     {
